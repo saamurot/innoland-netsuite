@@ -33,4 +33,9 @@ export class AppController {
     return this.appService.createPurchaseOrder(body);
   }
 
+  @Post('/GetWarehouseMonitoring')
+  getWarehouseMonitoring(@Body() body): any {
+    return this.appService.getWarehouseMonitoring(body);
+  }
+
 }
