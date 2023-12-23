@@ -16,7 +16,7 @@ dotenv.config();
 
 @Injectable()
 export class AppService {
-  
+
   async getPurchaseRequisition(data): Promise<any> {
     //return 'Hello World!';
     debugger
@@ -44,7 +44,7 @@ export class AppService {
 
     const headers = oauth.toHeader(oauth.authorize(request_data, token));
     headers['Content-Type'] = 'application/json';
-    
+
     const result = await axios({
       url: request_data.url,
       method: request_data.method,
@@ -79,7 +79,7 @@ export class AppService {
 
     const headers = oauth.toHeader(oauth.authorize(request_data, token));
     headers['Content-Type'] = 'application/json';
-    
+
     const result = await axios({
       url: request_data.url,
       method: request_data.method,
@@ -115,7 +115,7 @@ export class AppService {
 
     const headers = oauth.toHeader(oauth.authorize(request_data, token));
     headers['Content-Type'] = 'application/json';
-    
+
     const result = await axios({
       url: request_data.url,
       method: request_data.method,
@@ -150,7 +150,7 @@ export class AppService {
 
     const headers = oauth.toHeader(oauth.authorize(request_data, token));
     headers['Content-Type'] = 'application/json';
-    
+
     const result = await axios({
       url: request_data.url,
       method: request_data.method,
@@ -175,7 +175,7 @@ export class AppService {
     });
 
     const request_data = {
-      url: `${data.keys.domain}//app/site/hosting/restlet.nl?script=266&deploy=1&type=monitoring&filters=%5B%7B%22name%22%3A%22item%22%2C%22operator%22%3A%22anyof%22%2C%22values%22%3A%5B11507%5D%7D%2C%7B%22name%22%3A%22location%22%2C%22operator%22%3A%22anyof%22%2C%22values%22%3A%5B213%5D%7D%2C%7B%22name%22%3A%22class%22%2C%22operator%22%3A%22anyof%22%2C%22values%22%3A%5B9%5D%7D%5D`,
+      url: `${data.keys.domain}/app/site/hosting/restlet.nl?script=266&deploy=1&type=monitoring&filters=%5B%7B%22name%22%3A%22item%22%2C%22operator%22%3A%22anyof%22%2C%22values%22%3A%5B11507%5D%7D%2C%7B%22name%22%3A%22location%22%2C%22operator%22%3A%22anyof%22%2C%22values%22%3A%5B213%5D%7D%2C%7B%22name%22%3A%22class%22%2C%22operator%22%3A%22anyof%22%2C%22values%22%3A%5B9%5D%7D%5D`,
       method: 'GET'
     };
 
@@ -186,13 +186,19 @@ export class AppService {
 
     const headers = oauth.toHeader(oauth.authorize(request_data, token));
     headers['Content-Type'] = 'application/json';
-    
-    const result = await axios({
-      url: request_data.url,
-      method: request_data.method,
-      headers: headers,
-    });
-    return result.data;
+
+    let result;
+    try {
+      result = await axios({
+        url: request_data.url,
+        method: request_data.method,
+        headers: headers,
+      });
+    }
+    catch (e) {
+      console.log(e);
+    }
+    return result.data.result;
   }
 
 }
