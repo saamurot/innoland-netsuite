@@ -38,4 +38,29 @@ export class AppController {
     return this.appService.getWarehouseMonitoring(body);
   }
 
+  @Post('/GetCostManagement')
+  getCostManagement(@Body() body): any {
+    return this.appService.getCostManagement(body);
+  }
+
+  @Post('/GetItemReceipt')
+  getItemReceipt(@Body() body): any {
+    return this.appService.getItemReceipt(body);
+  }
+
+  @Post('/GetIntercompanyTransferOrder')
+  getIntercompanyTransferOrder(@Body() body): any {
+    return this.appService.getIntercompanyTransferOrder(body);
+  }
+
+  @Post('/GetVendorBill')
+  getVendorBill(@Body() body): any {
+    return this.appService.getVendorBill(body);
+  }
+
+  @Post('/GetVendorPayment')
+  getVendorPayment(@Body() body): any {
+    return this.appService.getVendorPayment(body);
+  }
+
 }

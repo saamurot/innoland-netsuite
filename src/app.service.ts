@@ -201,4 +201,189 @@ export class AppService {
     return result.data.result;
   }
 
+  async getCostManagement(data): Promise<any> {
+    //return 'Hello World!';
+    const oauth = OAuth({
+      consumer: {
+        key: data.keys.consumerKey,
+        secret: data.keys.consumerSecret
+      },
+      realm: data.keys.account,
+      signature_method: 'HMAC-SHA256',
+      hash_function(base_string, key) {
+        return crypto.createHmac('sha256', key).update(base_string).digest('base64');
+      }
+    });
+
+    const request_data = {
+      url: `${data.keys.domain}/app/site/hosting/restlet.nl?script=266&deploy=1&type=costmanagement&filters=%5B%7B%22name%22%3A%22subsidiary%22%2C%22operator%22%3A%22anyof%22%2C%22values%22%3A%5B4%5D%7D%2C%7B%22name%22%3A%22class%22%2C%22operator%22%3A%22anyof%22%2C%22values%22%3A%5B9%5D%7D%5D`,
+      method: 'GET'
+    };
+
+    const token = {
+      key: data.keys.tokenId,
+      secret: data.keys.tokenSecret
+    };
+
+    const headers = oauth.toHeader(oauth.authorize(request_data, token));
+    headers['Content-Type'] = 'application/json';
+
+    let result;
+    try {
+      result = await axios({
+        url: request_data.url,
+        method: request_data.method,
+        headers: headers,
+      });
+    }
+    catch (e) {
+      console.log(e);
+    }
+    return result.data.result;
+  }
+
+  async getItemReceipt(data): Promise<any> {
+    //return 'Hello World!';
+    debugger
+    const oauth = OAuth({
+      consumer: {
+        key: data.keys.consumerKey,
+        secret: data.keys.consumerSecret
+      },
+      realm: data.keys.account,
+      signature_method: 'HMAC-SHA256',
+      hash_function(base_string, key) {
+        return crypto.createHmac('sha256', key).update(base_string).digest('base64');
+      }
+    });
+
+    const request_data = {
+      url: `${data.keys.domain}/app/site/hosting/restlet.nl?script=266&deploy=1&id=566073&type=itemreceipt`,
+      method: 'GET'
+    };
+
+    const token = {
+      key: data.keys.tokenId,
+      secret: data.keys.tokenSecret
+    };
+
+    const headers = oauth.toHeader(oauth.authorize(request_data, token));
+    headers['Content-Type'] = 'application/json';
+
+    const result = await axios({
+      url: request_data.url,
+      method: request_data.method,
+      headers: headers,
+    });
+    return result.data;
+  }
+
+  async getIntercompanyTransferOrder(data): Promise<any> {
+    //return 'Hello World!';
+    debugger
+    const oauth = OAuth({
+      consumer: {
+        key: data.keys.consumerKey,
+        secret: data.keys.consumerSecret
+      },
+      realm: data.keys.account,
+      signature_method: 'HMAC-SHA256',
+      hash_function(base_string, key) {
+        return crypto.createHmac('sha256', key).update(base_string).digest('base64');
+      }
+    });
+
+    const request_data = {
+      url: `${data.keys.domain}/app/site/hosting/restlet.nl?script=266&deploy=1&id=564996&type=intercompanytransferorder`,
+      method: 'GET'
+    };
+
+    const token = {
+      key: data.keys.tokenId,
+      secret: data.keys.tokenSecret
+    };
+
+    const headers = oauth.toHeader(oauth.authorize(request_data, token));
+    headers['Content-Type'] = 'application/json';
+
+    const result = await axios({
+      url: request_data.url,
+      method: request_data.method,
+      headers: headers,
+    });
+    return result.data;
+  }
+
+  async getVendorBill(data): Promise<any> {
+    //return 'Hello World!';
+    debugger
+    const oauth = OAuth({
+      consumer: {
+        key: data.keys.consumerKey,
+        secret: data.keys.consumerSecret
+      },
+      realm: data.keys.account,
+      signature_method: 'HMAC-SHA256',
+      hash_function(base_string, key) {
+        return crypto.createHmac('sha256', key).update(base_string).digest('base64');
+      }
+    });
+
+    const request_data = {
+      url: `${data.keys.domain}/app/site/hosting/restlet.nl?script=266&deploy=1&id=571385&type=vendorbill`,
+      method: 'GET'
+    };
+
+    const token = {
+      key: data.keys.tokenId,
+      secret: data.keys.tokenSecret
+    };
+
+    const headers = oauth.toHeader(oauth.authorize(request_data, token));
+    headers['Content-Type'] = 'application/json';
+
+    const result = await axios({
+      url: request_data.url,
+      method: request_data.method,
+      headers: headers,
+    });
+    return result.data;
+  }
+
+  async getVendorPayment(data): Promise<any> {
+    //return 'Hello World!';
+    debugger
+    const oauth = OAuth({
+      consumer: {
+        key: data.keys.consumerKey,
+        secret: data.keys.consumerSecret
+      },
+      realm: data.keys.account,
+      signature_method: 'HMAC-SHA256',
+      hash_function(base_string, key) {
+        return crypto.createHmac('sha256', key).update(base_string).digest('base64');
+      }
+    });
+
+    const request_data = {
+      url: `${data.keys.domain}/app/site/hosting/restlet.nl?script=266&deploy=1&id=570167&type=vendorbill`,
+      method: 'GET'
+    };
+
+    const token = {
+      key: data.keys.tokenId,
+      secret: data.keys.tokenSecret
+    };
+
+    const headers = oauth.toHeader(oauth.authorize(request_data, token));
+    headers['Content-Type'] = 'application/json';
+
+    const result = await axios({
+      url: request_data.url,
+      method: request_data.method,
+      headers: headers,
+    });
+    return result.data;
+  }
+
 }
