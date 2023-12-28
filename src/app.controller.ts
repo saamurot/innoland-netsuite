@@ -33,6 +33,11 @@ export class AppController {
     return this.appService.createPurchaseOrder(body);
   }
 
+  @Post('/GetBom')
+  getBom(@Body() body): any {
+    return this.appService.getBom(body);
+  }
+
   @Post('/GetWarehouseMonitoring')
   getWarehouseMonitoring(@Body() body): any {
     return this.appService.getWarehouseMonitoring(body);
