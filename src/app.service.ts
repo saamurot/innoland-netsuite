@@ -175,7 +175,7 @@ export class AppService {
     });
 
     const request_data = {
-      url: `${data.keys.domain}/app/site/hosting/restlet.nl?script=266&deploy=1&type=monitoring&filters=%5B%7B%22name%22%3A%22item%22%2C%22operator%22%3A%22anyof%22%2C%22values%22%3A%5B11507%5D%7D%2C%7B%22name%22%3A%22location%22%2C%22operator%22%3A%22anyof%22%2C%22values%22%3A%5B213%5D%7D%2C%7B%22name%22%3A%22class%22%2C%22operator%22%3A%22anyof%22%2C%22values%22%3A%5B9%5D%7D%5D`,
+      url: `${data.keys.domain}/app/site/hosting/restlet.nl?script=266&deploy=1&type=monitoring&filters=%5B%7B%22name%22%3A%22item%22%2C%22operator%22%3A%22anyof%22%2C%22values%22%3A%5B11507%5D%7D%2C%7B%22name%22%3A%22location%22%2C%22operator%22%3A%22anyof%22%2C%22values%22%3A%5B213%5D%7D%2C%7B%22name%22%3A%22class%22%2C%22operator%22%3A%22anyof%22%2C%22values%22%3A%5B${data.data.class}%5D%7D%5D`,
       method: 'GET'
     };
 
@@ -214,9 +214,9 @@ export class AppService {
         return crypto.createHmac('sha256', key).update(base_string).digest('base64');
       }
     });
-
+    //101%2C96%2C73
     const request_data = {
-      url: `${data.keys.domain}/app/site/hosting/restlet.nl?script=266&deploy=1&type=bom&filters=%5B%7B%22name%22%3A%22cseg_pur_classif%22%2C%22operator%22%3A%22anyof%22%2C%22values%22%3A%5B7%2C6%2C5%5D%7D%2C%7B%22name%22%3A%22class%22%2C%22operator%22%3A%22anyof%22%2C%22values%22%3A%5B101%2C96%2C73%5D%7D%5D`,
+      url: `${data.keys.domain}/app/site/hosting/restlet.nl?script=266&deploy=1&type=bom&filters=%5B%7B%22name%22%3A%22cseg_pur_classif%22%2C%22operator%22%3A%22anyof%22%2C%22values%22%3A%5B7%2C6%2C5%5D%7D%2C%7B%22name%22%3A%22class%22%2C%22operator%22%3A%22anyof%22%2C%22values%22%3A%5B${data.data.class}%5D%7D%5D`,
       method: 'GET'
     };
 
@@ -257,7 +257,7 @@ export class AppService {
     });
 
     const request_data = {
-      url: `${data.keys.domain}/app/site/hosting/restlet.nl?script=266&deploy=1&type=costmanagement&filters=%5B%7B%22name%22%3A%22subsidiary%22%2C%22operator%22%3A%22anyof%22%2C%22values%22%3A%5B4%5D%7D%2C%7B%22name%22%3A%22class%22%2C%22operator%22%3A%22anyof%22%2C%22values%22%3A%5B9%5D%7D%5D`,
+      url: `${data.keys.domain}/app/site/hosting/restlet.nl?script=266&deploy=1&type=costmanagement&filters=%5B%7B%22name%22%3A%22subsidiary%22%2C%22operator%22%3A%22anyof%22%2C%22values%22%3A%5B4%5D%7D%2C%7B%22name%22%3A%22class%22%2C%22operator%22%3A%22anyof%22%2C%22values%22%3A%5B${data.data.class}%5D%7D%5D`,
       method: 'GET'
     };
 
