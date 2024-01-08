@@ -68,4 +68,9 @@ export class AppController {
     return this.appService.getVendorPayment(body);
   }
 
+  @Post('/GetPayables')
+  getPayables(@Body() body): any {
+    return this.appService.getPayables(body);
+  }
+
 }
