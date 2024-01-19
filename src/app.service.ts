@@ -214,12 +214,31 @@ export class AppService {
         return crypto.createHmac('sha256', key).update(base_string).digest('base64');
       }
     });
-    //101%2C96%2C73
+    //custbody_job_order - 7%2C6%2C5
+    //class- 101%2C96%2C73
+    // console.log(data.data.custbody_job_order);
+    // let cjb = data.data.custbody_job_order.replaceAll(',', "%2C");
+    // console.log(cjb);
+
+    // {
+    //   name: 'custbody_job_order',
+    //   operator: 'anyof',
+    //   values: [7, 6, 5]
+    // },
+    let filters = [
+      {
+        name: 'class',
+        operator: 'anyof',
+        values: [data.data.class]
+      }
+    ];
+    let enc = encodeURIComponent(JSON.stringify(filters));
+    // url: `${data.keys.domain}/app/site/hosting/restlet.nl?script=266&deploy=1&type=bom&filters=%5B%7B%22name%22%3A%custbody_job_order%22%2C%22operator%22%3A%22anyof%22%2C%22values%22%3A%5B${cjb}%5D%7D%2C%7B%22name%22%3A%22class%22%2C%22operator%22%3A%22anyof%22%2C%22values%22%3A%5B${data.data.class}%5D%7D%5D`,
     const request_data = {
-      url: `${data.keys.domain}/app/site/hosting/restlet.nl?script=266&deploy=1&type=bom&filters=%5B%7B%22name%22%3A%22cseg_pur_classif%22%2C%22operator%22%3A%22anyof%22%2C%22values%22%3A%5B7%2C6%2C5%5D%7D%2C%7B%22name%22%3A%22class%22%2C%22operator%22%3A%22anyof%22%2C%22values%22%3A%5B${data.data.class}%5D%7D%5D`,
+      url: `${data.keys.domain}/app/site/hosting/restlet.nl?script=266&deploy=1&type=bom&filters=${enc}`,
       method: 'GET'
     };
-
+    //console.log(request_data.url);
     const token = {
       key: data.keys.tokenId,
       secret: data.keys.tokenSecret
