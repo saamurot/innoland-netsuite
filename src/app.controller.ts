@@ -73,4 +73,10 @@ export class AppController {
     return this.appService.getPayables(body);
   }
 
+  @Post('/CreateVendorBill')
+  async createVendorBill(@Body() body) {
+    debugger
+    return this.appService.createVendorBill(body);
+  }
+
 }
