@@ -75,8 +75,32 @@ export class AppController {
 
   @Post('/CreateVendorBill')
   async createVendorBill(@Body() body) {
-    debugger
     return this.appService.createVendorBill(body);
+  }
+
+  @Post('/GetFixedAsset')
+  getFixedAsset(@Body() body): any {
+    return this.appService.getFixedAsset(body);
+  }
+
+  @Post('/CreateFixedAsset')
+  async createFixedAsset(@Body() body) {
+    return this.appService.createFixedAsset(body);
+  }
+
+  @Post('/GetOtherExpenses')
+  getOtherExpenses(@Body() body): any {
+    return this.appService.getOtherExpenses(body);
+  }
+
+  @Post('/GetBilling')
+  getBilling(@Body() body): any {
+    return this.appService.getBilling(body);
+  }
+
+  @Post('/CreateBilling')
+  async createBilling(@Body() body) {
+    return this.appService.createBilling(body);
   }
 
 }
