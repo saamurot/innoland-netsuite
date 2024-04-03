@@ -493,6 +493,7 @@ export class AppService {
         url: request_data.url,
         method: request_data.method,
         headers: headers,
+        timeout: 600000 
       });
     }
     catch (e) {
