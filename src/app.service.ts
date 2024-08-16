@@ -11,7 +11,7 @@ dotenv.config();
 // const tokenId = process.env.token_id
 // const tokenSecret = process.env.token_secret
 // const account = process.env.realm
-// const url = `${data.keys.domain}/app/site/hosting/restlet.nl?script=266&deploy=1&id=570785&type=purchaserequisition`
+// const url = `${data.keys.domain}/app/site/hosting/restlet.nl?script=${data.keys.domain == 'https://6199424.restlets.api.netsuite.com' ? '271' : '266'}&deploy=1&id=570785&type=purchaserequisition`
 // const method = 'GET'
 
 @Injectable()
@@ -33,7 +33,7 @@ export class AppService {
     });
 
     const request_data = {
-      url: `${data.keys.domain}/app/site/hosting/restlet.nl?script=266&deploy=1&id=570785&type=purchaserequisition`,
+      url: `${data.keys.domain}/app/site/hosting/restlet.nl?script=${data.keys.domain == 'https://6199424.restlets.api.netsuite.com' ? '271' : '266'}&deploy=1&id=570785&type=purchaserequisition`,
       method: 'GET'
     };
 
@@ -68,7 +68,7 @@ export class AppService {
     });
 
     const request_data = {
-      url: `${data.keys.domain}/app/site/hosting/restlet.nl?script=266&deploy=1`,
+      url: `${data.keys.domain}/app/site/hosting/restlet.nl?script=${data.keys.domain == 'https://6199424.restlets.api.netsuite.com' ? '271' : '266'}&deploy=1`,
       method: 'POST'
     };
 
@@ -104,7 +104,7 @@ export class AppService {
     });
 
     const request_data = {
-      url: `${data.keys.domain}/app/site/hosting/restlet.nl?script=266&deploy=1&id=572087&type=purchaseorder`,
+      url: `${data.keys.domain}/app/site/hosting/restlet.nl?script=${data.keys.domain == 'https://6199424.restlets.api.netsuite.com' ? '271' : '266'}&deploy=1&id=572087&type=purchaseorder`,
       method: 'GET'
     };
 
@@ -139,7 +139,7 @@ export class AppService {
     });
 
     const request_data = {
-      url: `${data.keys.domain}/app/site/hosting/restlet.nl?script=266&deploy=1`,
+      url: `${data.keys.domain}/app/site/hosting/restlet.nl?script=${data.keys.domain == 'https://6199424.restlets.api.netsuite.com' ? '271' : '266'}&deploy=1`,
       method: 'POST'
     };
 
@@ -175,7 +175,7 @@ export class AppService {
     });
 
     const request_data = {
-      url: `${data.keys.domain}/app/site/hosting/restlet.nl?script=266&deploy=1&type=monitoring&filters=%5B%7B%22name%22%3A%22item%22%2C%22operator%22%3A%22anyof%22%2C%22values%22%3A%5B11507%5D%7D%2C%7B%22name%22%3A%22location%22%2C%22operator%22%3A%22anyof%22%2C%22values%22%3A%5B213%5D%7D%2C%7B%22name%22%3A%22class%22%2C%22operator%22%3A%22anyof%22%2C%22values%22%3A%5B${data.data.class}%5D%7D%5D`,
+      url: `${data.keys.domain}/app/site/hosting/restlet.nl?script=${data.keys.domain == 'https://6199424.restlets.api.netsuite.com' ? '271' : '266'}&deploy=1&type=monitoring&filters=%5B%7B%22name%22%3A%22item%22%2C%22operator%22%3A%22anyof%22%2C%22values%22%3A%5B11507%5D%7D%2C%7B%22name%22%3A%22location%22%2C%22operator%22%3A%22anyof%22%2C%22values%22%3A%5B213%5D%7D%2C%7B%22name%22%3A%22class%22%2C%22operator%22%3A%22anyof%22%2C%22values%22%3A%5B${data.data.class}%5D%7D%5D`,
       method: 'GET'
     };
 
@@ -229,7 +229,7 @@ export class AppService {
     ];
     let enc = encodeURIComponent(JSON.stringify(filters));
     const request_data = {
-      url: `${data.keys.domain}/app/site/hosting/restlet.nl?script=266&deploy=1&type=bom&filters=${enc}`,
+      url: `${data.keys.domain}/app/site/hosting/restlet.nl?script=${data.keys.domain == 'https://6199424.restlets.api.netsuite.com' ? '271' : '266'}&deploy=1&type=bom&filters=${enc}`,
       method: 'GET'
     };
     //console.log(request_data.url);
@@ -283,7 +283,7 @@ export class AppService {
     ];
     let enc = encodeURIComponent(JSON.stringify(filters));
     const request_data = {
-      url: `${data.keys.domain}/app/site/hosting/restlet.nl?script=266&deploy=1&type=costmanagement&filters=${enc}`,
+      url: `${data.keys.domain}/app/site/hosting/restlet.nl?script=${data.keys.domain == 'https://6199424.restlets.api.netsuite.com' ? '271' : '266'}&deploy=1&type=costmanagement&filters=${enc}`,
       method: 'GET'
     };
 
@@ -325,7 +325,7 @@ export class AppService {
     });
 
     const request_data = {
-      url: `${data.keys.domain}/app/site/hosting/restlet.nl?script=266&deploy=1&id=566073&type=itemreceipt`,
+      url: `${data.keys.domain}/app/site/hosting/restlet.nl?script=${data.keys.domain == 'https://6199424.restlets.api.netsuite.com' ? '271' : '266'}&deploy=1&id=566073&type=itemreceipt`,
       method: 'GET'
     };
 
@@ -361,7 +361,7 @@ export class AppService {
     });
 
     const request_data = {
-      url: `${data.keys.domain}/app/site/hosting/restlet.nl?script=266&deploy=1&id=564996&type=intercompanytransferorder`,
+      url: `${data.keys.domain}/app/site/hosting/restlet.nl?script=${data.keys.domain == 'https://6199424.restlets.api.netsuite.com' ? '271' : '266'}&deploy=1&id=564996&type=intercompanytransferorder`,
       method: 'GET'
     };
 
@@ -397,7 +397,7 @@ export class AppService {
     });
 
     const request_data = {
-      url: `${data.keys.domain}/app/site/hosting/restlet.nl?script=266&deploy=1&id=571385&type=vendorbill`,
+      url: `${data.keys.domain}/app/site/hosting/restlet.nl?script=${data.keys.domain == 'https://6199424.restlets.api.netsuite.com' ? '271' : '266'}&deploy=1&id=571385&type=vendorbill`,
       method: 'GET'
     };
 
@@ -433,7 +433,7 @@ export class AppService {
     });
 
     const request_data = {
-      url: `${data.keys.domain}/app/site/hosting/restlet.nl?script=266&deploy=1&id=570167&type=vendorbill`,
+      url: `${data.keys.domain}/app/site/hosting/restlet.nl?script=${data.keys.domain == 'https://6199424.restlets.api.netsuite.com' ? '271' : '266'}&deploy=1&id=570167&type=vendorbill`,
       method: 'GET'
     };
 
@@ -475,7 +475,7 @@ export class AppService {
     ];
     let enc = encodeURIComponent(JSON.stringify(filters));
     const request_data = {
-      url: `${data.keys.domain}/app/site/hosting/restlet.nl?script=266&deploy=1&type=payables&filters=${enc}`,
+      url: `${data.keys.domain}/app/site/hosting/restlet.nl?script=${data.keys.domain == 'https://6199424.restlets.api.netsuite.com' ? '271' : '266'}&deploy=1&type=payables&filters=${enc}`,
       method: 'GET'
     };
 
@@ -493,7 +493,7 @@ export class AppService {
         url: request_data.url,
         method: request_data.method,
         headers: headers,
-        timeout: 600000 
+        timeout: 600000
       });
     }
     catch (e) {
@@ -517,7 +517,7 @@ export class AppService {
     });
 
     const request_data = {
-      url: `${data.keys.domain}/app/site/hosting/restlet.nl?script=266&deploy=1`,
+      url: `${data.keys.domain}/app/site/hosting/restlet.nl?script=${data.keys.domain == 'https://6199424.restlets.api.netsuite.com' ? '271' : '266'}&deploy=1`,
       method: 'POST'
     };
 
@@ -551,9 +551,9 @@ export class AppService {
         return crypto.createHmac('sha256', key).update(base_string).digest('base64');
       }
     });
-    
+
     const request_data = {
-      url: `${data.keys.domain}/app/site/hosting/restlet.nl?script=266&deploy=1&id=580640&type=journalentry`,
+      url: `${data.keys.domain}/app/site/hosting/restlet.nl?script=${data.keys.domain == 'https://6199424.restlets.api.netsuite.com' ? '271' : '266'}&deploy=1&id=580640&type=journalentry`,
       method: 'GET'
     };
     //console.log(request_data.url);
@@ -594,7 +594,7 @@ export class AppService {
     });
 
     const request_data = {
-      url: `${data.keys.domain}/app/site/hosting/restlet.nl?script=266&deploy=1`,
+      url: `${data.keys.domain}/app/site/hosting/restlet.nl?script=${data.keys.domain == 'https://6199424.restlets.api.netsuite.com' ? '271' : '266'}&deploy=1`,
       method: 'POST'
     };
 
@@ -628,9 +628,9 @@ export class AppService {
         return crypto.createHmac('sha256', key).update(base_string).digest('base64');
       }
     });
-    
+
     const request_data = {
-      url: `${data.keys.domain}/app/site/hosting/restlet.nl?script=266&deploy=1&id=571385&type=vendorbill`,
+      url: `${data.keys.domain}/app/site/hosting/restlet.nl?script=${data.keys.domain == 'https://6199424.restlets.api.netsuite.com' ? '271' : '266'}&deploy=1&id=571385&type=vendorbill`,
       method: 'GET'
     };
     //console.log(request_data.url);
@@ -669,9 +669,9 @@ export class AppService {
         return crypto.createHmac('sha256', key).update(base_string).digest('base64');
       }
     });
-    
+
     const request_data = {
-      url: `${data.keys.domain}/app/site/hosting/restlet.nl?script=266&deploy=1&id=572812&type=invoice`,
+      url: `${data.keys.domain}/app/site/hosting/restlet.nl?script=${data.keys.domain == 'https://6199424.restlets.api.netsuite.com' ? '271' : '266'}&deploy=1&id=572812&type=invoice`,
       method: 'GET'
     };
     //console.log(request_data.url);
@@ -712,7 +712,7 @@ export class AppService {
     });
 
     const request_data = {
-      url: `${data.keys.domain}/app/site/hosting/restlet.nl?script=266&deploy=1`,
+      url: `${data.keys.domain}/app/site/hosting/restlet.nl?script=${data.keys.domain == 'https://6199424.restlets.api.netsuite.com' ? '271' : '266'}&deploy=1`,
       method: 'POST'
     };
 
