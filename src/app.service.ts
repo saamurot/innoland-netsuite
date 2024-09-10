@@ -219,7 +219,7 @@ export class AppService {
       {
         name: 'custbody_job_order',
         operator: 'anyof',
-        values: [data.data.trade]
+        values: data.data.trade
       },
       {
         name: 'class',
