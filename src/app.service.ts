@@ -216,11 +216,11 @@ export class AppService {
     });
     console.log(data.data.trade)
     let filters = [
-      {
-        name: 'custbody_job_order',
-        operator: 'anyof',
-        values: data.data.trade
-      },
+      // {
+      //   name: 'custbody_job_order',
+      //   operator: 'anyof',
+      //   values: data.data.trade
+      // },
       {
         name: 'class',
         operator: 'anyof',
