@@ -103,4 +103,20 @@ export class AppController {
     return this.appService.createBilling(body);
   }
 
+  @Post('/GetStripePaymentIntent')
+  async GetStripePaymentIntent(@Body() body) {
+
+    const stripe = require('stripe')(body.key);
+
+    const paymentIntent = await stripe.paymentIntents.create({
+      amount: body.amount,
+      currency: body.currency,
+      payment_method_types: ['card'],
+      automatic_payment_methods: {
+        enabled: false,
+      },
+    });
+    return paymentIntent;
+  }
+
 }
