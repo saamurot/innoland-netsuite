@@ -120,8 +120,8 @@ export class AppController {
     return paymentIntent;
   }
 
-  @Post()
-  async initiatePayment(@Body() body) {
+  @Post('/InitiateDragonPayPayment')
+  async InitiateDragonPayPayment(@Body() body) {
     let config = {
       headers: {
         "Content-Type": "application/json",
