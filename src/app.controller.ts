@@ -1,5 +1,6 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { AppService } from './app.service';
+import axios from 'axios';
 
 @Controller()
 export class AppController {
@@ -117,6 +118,25 @@ export class AppController {
       },
     });
     return paymentIntent;
+  }
+
+  @Post()
+  async initiatePayment(@Body() body) {
+    let config = {
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization': 'Basic ' + body.Token
+      }
+    };
+    let data = {
+      "Amount": body.Amount,
+      "Currency": "PHP",
+      "Description": "digiClinic License Renewal",
+      "Email": body.EmailID,
+      "ProcId": ""
+    };
+    const res = await axios.post(`https://test.dragonpay.ph/api/collect/v2/${body.TransactionID}/post`, data, config);
+    return res.data;
   }
 
 }
