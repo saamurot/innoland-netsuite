@@ -120,6 +120,25 @@ export class AppController {
     return paymentIntent;
   }
 
+  @Post('/InitiateDragonPayPaymentUAT')
+  async InitiateDragonPayPaymentUAT(@Body() body) {
+    let config = {
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization': 'Basic ' + body.Token
+      }
+    };
+    let data = {
+      "Amount": body.Amount,
+      "Currency": "PHP",
+      "Description": "digiClinic License Renewal",
+      "Email": body.EmailID,
+      "ProcId": ""
+    };
+    const res = await axios.post(`https://test.dragonpay.ph/api/collect/v2/${body.TransactionID}/post`, data, config);
+    return res.data;
+  }
+
   @Post('/InitiateDragonPayPayment')
   async InitiateDragonPayPayment(@Body() body) {
     let config = {
@@ -135,7 +154,7 @@ export class AppController {
       "Email": body.EmailID,
       "ProcId": ""
     };
-    const res = await axios.post(`https://test.dragonpay.ph/api/collect/v2/${body.TransactionID}/post`, data, config);
+    const res = await axios.post(`https://gw.dragonpay.ph/api/collect/v2/${body.TransactionID}/post`, data, config);
     return res.data;
   }
 
