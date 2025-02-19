@@ -151,10 +151,9 @@ export class AppController {
       "Amount": body.Amount,
       "Currency": "PHP",
       "Description": "digiClinic License Renewal",
-      "Email": body.EmailID,
-      "ProcId": ""
+      "Email": body.EmailID
     };
-    const res = await axios.post(`https://gw.dragonpay.ph/api/collect/v2/${body.TransactionID}/post`, data, config);
+    const res = await axios.post(`https://gw.dragonpay.ph/api/collect/v1/${body.TransactionID}/post`, data, config);
     return res.data;
   }
 
