@@ -1,6 +1,7 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { AppService } from './app.service';
 import axios from 'axios';
+const crypto = require('crypto');
 
 @Controller()
 export class AppController {
@@ -155,6 +156,15 @@ export class AppController {
     };
     const res = await axios.post(`https://gw.dragonpay.ph/api/collect/v1/${body.TransactionID}/post`, data, config);
     return res.data;
+  }
+
+  @Post('/CreateHotelBedSignature')
+  async CreateHotelBedSignature(@Body() body) {
+    const timestamp = Math.floor(Date.now() / 1000);
+    const signatureString = `${body.clientId}${body.clientSecret}${timestamp}`;
+    const hash = crypto.createHash('sha256');
+    hash.update(signatureString);
+    return { signature: hash.digest('hex'), timestamp: timestamp };
   }
 
 }
