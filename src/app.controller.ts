@@ -167,4 +167,36 @@ export class AppController {
     return { signature: hash.digest('hex'), timestamp: timestamp };
   }
 
+  @Get('/GetDestinations')
+  async GetDestinations() {
+    try {
+      const myHeaders = new Headers();
+      myHeaders.append("Api-key", "531c46fc346c6729b9e9094f65abef70");
+      myHeaders.append("X-Signature", "947aec101ed8e7ec04519e6b1b8a99d8475ef36dd9c142dce9f5796ad159da75");
+      myHeaders.append("Accept", "application/json");
+      // Remove the Accept-Encoding header!
+      // myHeaders.append("Accept-Encoding", "gzip");
+
+      let requestOptions: any = {
+        method: "GET",
+        headers: myHeaders,
+        redirect: "follow",
+      };
+
+      const response = await fetch(
+        "https://api.test.hotelbeds.com/hotel-content-api/1.0/locations/destinations?fields=all&countryCodes=IN&language=ENG&from=1&to=100&useSecondaryLanguage=false",
+        requestOptions
+      );
+      console.log(response);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const result = await response.text();
+      console.log(result);
+      return result;
+    } catch (error) {
+      console.error(error);
+    }
+  }
 }
