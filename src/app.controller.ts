@@ -3,6 +3,10 @@ import { AppService } from './app.service';
 import axios from 'axios';
 const crypto = require('crypto');
 
+const HOTELBEDS_BASE_URL = "https://api.test.hotelbeds.com";
+const HOTELBEDS_CLIENT_ID = "531c46fc346c6729b9e9094f65abef70";
+const HOTELBEDS_CLIENT_SECRET = "1e83c000f3";
+
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) { }
@@ -170,9 +174,17 @@ export class AppController {
   @Get('/GetDestinations')
   async GetDestinations() {
     try {
+      const timestamp = Math.floor(Date.now() / 1000);
+      const signatureString = `${HOTELBEDS_CLIENT_ID}${HOTELBEDS_CLIENT_SECRET}${timestamp}`;
+      const hash = crypto.createHash('sha256');
+      hash.update(signatureString);
+      const signature = hash.digest('hex');
+      console.log("signature", signature);
+      // return { signature: hash.digest('hex'), timestamp: timestamp };
+
       const myHeaders = new Headers();
-      myHeaders.append("Api-key", "531c46fc346c6729b9e9094f65abef70");
-      myHeaders.append("X-Signature", "947aec101ed8e7ec04519e6b1b8a99d8475ef36dd9c142dce9f5796ad159da75");
+      myHeaders.append("Api-key", HOTELBEDS_CLIENT_ID);
+      myHeaders.append("X-Signature", signature);
       myHeaders.append("Accept", "application/json");
       // Remove the Accept-Encoding header!
       // myHeaders.append("Accept-Encoding", "gzip");
@@ -184,16 +196,98 @@ export class AppController {
       };
 
       const response = await fetch(
-        "https://api.test.hotelbeds.com/hotel-content-api/1.0/locations/destinations?fields=all&countryCodes=IN&language=ENG&from=1&to=100&useSecondaryLanguage=false",
+        "https://api.test.hotelbeds.com/hotel-content-api/1.0/locations/destinations?fields=all&countryCodes=IN&language=ENG&from=1&to=361&useSecondaryLanguage=false",
         requestOptions
       );
-      console.log(response);
+      // console.log(response);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
       const result = await response.text();
-      console.log(result);
+      // console.log(result);
+      return result;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  @Get('/GetHotels')
+  async GetHotels() {
+    try {
+      const timestamp = Math.floor(Date.now() / 1000);
+      const signatureString = `${HOTELBEDS_CLIENT_ID}${HOTELBEDS_CLIENT_SECRET}${timestamp}`;
+      const hash = crypto.createHash('sha256');
+      hash.update(signatureString);
+      const signature = hash.digest('hex');
+      console.log("signature", signature);
+      // return { signature: hash.digest('hex'), timestamp: timestamp };
+
+      const myHeaders = new Headers();
+      myHeaders.append("Api-key", HOTELBEDS_CLIENT_ID);
+      myHeaders.append("X-Signature", signature);
+      myHeaders.append("Accept", "application/json");
+      // Remove the Accept-Encoding header!
+      // myHeaders.append("Accept-Encoding", "gzip");
+
+      let requestOptions: any = {
+        method: "GET",
+        headers: myHeaders,
+        redirect: "follow",
+      };
+
+      const response = await fetch(
+        "https://api.test.hotelbeds.com/hotel-content-api/1.0/hotels?fields=all&destinationCode=BLR&language=ENG&from=1&to=10&useSecondaryLanguage=false",
+        requestOptions
+      );
+      // console.log(response);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const result = await response.text();
+      // console.log(result);
+      return result;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  @Get('/GetHotelDetails')
+  async GetHotelDetails() {
+    try {
+      const timestamp = Math.floor(Date.now() / 1000);
+      const signatureString = `${HOTELBEDS_CLIENT_ID}${HOTELBEDS_CLIENT_SECRET}${timestamp}`;
+      const hash = crypto.createHash('sha256');
+      hash.update(signatureString);
+      const signature = hash.digest('hex');
+      console.log("signature", signature);
+      // return { signature: hash.digest('hex'), timestamp: timestamp };
+
+      const myHeaders = new Headers();
+      myHeaders.append("Api-key", HOTELBEDS_CLIENT_ID);
+      myHeaders.append("X-Signature", signature);
+      myHeaders.append("Accept", "application/json");
+      // Remove the Accept-Encoding header!
+      // myHeaders.append("Accept-Encoding", "gzip");
+
+      let requestOptions: any = {
+        method: "GET",
+        headers: myHeaders,
+        redirect: "follow",
+      };
+
+      const response = await fetch(
+        "https://api.test.hotelbeds.com/hotel-content-api/1.0/hotels/59394/details?language=ENG&useSecondaryLanguage=False",
+        requestOptions
+      );
+      // console.log(response);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const result = await response.text();
+      // console.log(result);
       return result;
     } catch (error) {
       console.error(error);
