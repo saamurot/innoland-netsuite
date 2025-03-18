@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post, Query } from '@nestjs/common';
 import { AppService } from './app.service';
 import axios from 'axios';
 const crypto = require('crypto');
@@ -213,7 +213,8 @@ export class AppController {
   }
 
   @Get('/GetHotels')
-  async GetHotels() {
+  async GetHotels(@Query('destinationCode') destinationCode: any, @Query('from') from: any, @Query('to') to: any) {
+    console.log({ "destinationCode": destinationCode, "from": from, "to": to });
     try {
       const timestamp = Math.floor(Date.now() / 1000);
       const signatureString = `${HOTELBEDS_CLIENT_ID}${HOTELBEDS_CLIENT_SECRET}${timestamp}`;
@@ -237,7 +238,7 @@ export class AppController {
       };
 
       const response = await fetch(
-        "https://api.test.hotelbeds.com/hotel-content-api/1.0/hotels?fields=all&destinationCode=BLR&language=ENG&from=1&to=10&useSecondaryLanguage=false",
+        `https://api.test.hotelbeds.com/hotel-content-api/1.0/hotels?fields=all&destinationCode=${destinationCode}&language=ENG&from=${from}&to=${to}&useSecondaryLanguage=false`,
         requestOptions
       );
       // console.log(response);
@@ -254,7 +255,7 @@ export class AppController {
   }
 
   @Get('/GetHotelDetails')
-  async GetHotelDetails() {
+  async GetHotelDetails(@Query('hotelCode') hotelCode: any) {
     try {
       const timestamp = Math.floor(Date.now() / 1000);
       const signatureString = `${HOTELBEDS_CLIENT_ID}${HOTELBEDS_CLIENT_SECRET}${timestamp}`;
@@ -278,7 +279,7 @@ export class AppController {
       };
 
       const response = await fetch(
-        "https://api.test.hotelbeds.com/hotel-content-api/1.0/hotels/59394/details?language=ENG&useSecondaryLanguage=False",
+        `https://api.test.hotelbeds.com/hotel-content-api/1.0/hotels/${hotelCode}/details?language=ENG&useSecondaryLanguage=False`,
         requestOptions
       );
       // console.log(response);
