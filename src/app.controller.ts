@@ -1,7 +1,9 @@
-import { Body, Controller, Get, Post, Query } from '@nestjs/common';
+import { Body, Controller, Get, Post, Query, Res } from '@nestjs/common';
 import { AppService } from './app.service';
 import axios from 'axios';
 const crypto = require('crypto');
+import { Response } from 'express';
+import * as pdf from 'html-pdf-node';
 
 
 @Controller()
@@ -158,4 +160,38 @@ export class AppController {
     const res = await axios.post(`https://gw.dragonpay.ph/api/collect/v1/${body.TransactionID}/post`, data, config);
     return res.data;
   }
+
+  @Post('downloadPdf')
+  async downloadPdf(@Body() body, @Res() res: Response) {
+    const file = { content: body.html };
+    const options = {
+      format: 'A4',
+      landscape: body?.type == 'l' ? true : false,
+      printBackground: true,
+      displayHeaderFooter: false,
+      footerTemplate: `
+        <div style="font-size: 12px; text-align: center; width: 100%; padding: 10px;">
+          <span class="pageNumber"></span> of <span class="totalPages"></span>
+        </div>
+      `,
+      headerTemplate: `<div></div>`, // Empty header if not needed
+      margin: {
+        top: '25px',
+        bottom: '25px',
+        right: '25px',
+        left: '25px'
+      }
+    };
+
+    try {
+      const buffer = await pdf.generatePdf(file, options);
+      res.setHeader('Content-Type', 'application/pdf');
+      res.setHeader('Content-Disposition', 'attachment; filename="example.pdf"');
+      res.end(buffer);
+    } catch (err) {
+      console.error('PDF generation failed:', err);
+      res.status(500).send('Failed to generate PDF');
+    }
+  }
+
 }
